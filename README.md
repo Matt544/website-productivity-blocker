@@ -60,9 +60,9 @@ To change the times the script enforces blocking/unblocking:
 1. Modify the times in the PowerShell script (`$disableStart` and `$disableEnd`).
 
 And if using Task Scheduler:
-1. Update the XML triggers to times after the `$disableStart` and `$disableEnd` times.
-1. Delete the existing task from Task Scheduler.
-1. Re-import the updated XML file.
+2. Update the XML triggers to times after the `$disableStart` and `$disableEnd` times.
+2. Delete the existing task from Task Scheduler.
+2. Re-import the updated XML file.
 
 Note: Editing the XML file alone does not update an already-registered task in Task 
 Scheduler.
