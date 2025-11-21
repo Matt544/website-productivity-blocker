@@ -21,6 +21,7 @@ PowerShell script file.
 ```xml
 <Arguments>-NoProfile -ExecutionPolicy Bypass -File "C:\path\to\productivity-blocker.ps1"</Arguments>
 ```
+
 If you move the PowerShell script to a different folder, you must update the XML file 
 accordingly before importing it into Task Manager. To change an existing task, delete 
 the old and import anew (see "Updating Task Times", below).
@@ -36,6 +37,7 @@ powershell terminal, from within the directory that contains the
 # Enable all websites immediately
 .\productivity-blocker.ps1 -state enabled
 ```
+
 Manual overrides do not affect scheduled operations — the next scheduled trigger will 
 enforce the normal time-based behavior.
 
@@ -45,6 +47,7 @@ enforce the normal time-based behavior.
 1. In the right-hand Actions pane, click Import Task…
 1. Navigate to the XML file, select it, and click Open
 1. Review the settings, ensure Run with highest privileges is selected, then click OK
+
 The task is now ready to run automatically on login.
 
 ## Disabling or Removing the Task
@@ -55,10 +58,12 @@ The task is now ready to run automatically on login.
 ## Updating Task Times
 To change the times the script enforces blocking/unblocking:
 1. Modify the times in the PowerShell script (`$disableStart` and `$disableEnd`).
+
 And if using Task Scheduler:
 1. Update the XML triggers to times after the `$disableStart` and `$disableEnd` times.
 1. Delete the existing task from Task Scheduler.
 1. Re-import the updated XML file.
+
 Note: Editing the XML file alone does not update an already-registered task in Task 
 Scheduler.
 
@@ -66,6 +71,7 @@ Scheduler.
 To update the list of websites that are blocked:
 1. Open `productivity-blocker.ps1` in a text editor.
 1. Edit the `$blockedSites` array to add or remove domains.
+
 Example:
 ```powershell
 $blockedSites = @(
@@ -77,15 +83,17 @@ $blockedSites = @(
     "www.reddit.com"
 )
 ```
+
 Do not add a trailing comma after the last entry.
 
 To block a subdomain or alternative domain, you must list it explicitly (e.g., 
 "m.youtube.com" or "news.google.com").
 
 After saving the script, the next scheduled run (or a manual override) will use the 
-updated list.
+updated list. However, note that browser caching can interfere with this. Consider using
+distracting sites in separate browser sessions.
 
 ## Notes
-- Requires administrator privileges to modify the hosts file.
+- Requires administrator privileges to modify the "hosts" file.
 - Works per user session (LogonTrigger).
-- By default, uses hosts file entries to block websites system-wide.
+- By default, uses "hosts" file entries to block websites system-wide.
