@@ -2,7 +2,7 @@
 This setup automatically blocks or unblocks selected distracting websites on your 
 Windows machine. It uses:
 - A PowerShell script: productivity-blocker.ps1
-- Task Scheduler task: XML import to run the script at login.
+- Task Scheduler task: XML import to run the script at designated times and at login.
 
 ## The powershell script
 - Automatically enables blocking during work hours (default 6:00 AM – 10:00 PM)
