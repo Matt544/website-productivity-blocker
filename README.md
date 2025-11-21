@@ -1,4 +1,4 @@
-# Productivity Blocker
+# Website Productivity Blocker
 This setup automatically blocks or unblocks selected distracting websites on your 
 Windows machine. It uses:
 - A PowerShell script: productivity-blocker.ps1
