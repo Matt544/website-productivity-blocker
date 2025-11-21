@@ -9,7 +9,7 @@ Windows machine. It uses:
 - Automatically disables blocking outside work hours
 - Permits manually override the state with a command-line parameter
 
-Website access is enabled and disabled by modifies the "hosts" file (as written, this  
+Website access is enabled and disabled by modifies the "hosts" file (as written, this 
 assumes "C:\Windows\System32\drivers\etc\hosts"). No browser plugin is needed.
 
 ## XML Task Files
@@ -23,10 +23,10 @@ PowerShell script file.
 ```
 If you move the PowerShell script to a different folder, you must update the XML file 
 accordingly before importing it into Task Manager. To change an existing task, delete 
-the old and import anew (see Updating Task Times, below).
+the old and import anew (see "Updating Task Times", below).
 
 ## Manual Override
-To temporarily change the state without waiting for scheduled triggers, run this in a 
+To temporarily change the blocking-state without waiting for scheduled triggers, run this in a 
 powershell terminal, from within the directory that contains the 
 "productivity-blocker.ps1" file:
 ```powershell
@@ -40,11 +40,11 @@ Manual overrides do not affect scheduled operations — the next scheduled trigg
 enforce the normal time-based behavior.
 
 ## Importing the Task into Task Scheduler
-#. Open Task Scheduler (Win + R → taskschd.msc).
-#. Select Task Scheduler Library (or create a subfolder).
-#. In the right-hand Actions pane, click Import Task…
-#. Navigate to the XML file, select it, and click Open
-#. Review the settings, ensure Run with highest privileges is selected, then click OK
+1. Open Task Scheduler (Win + R → taskschd.msc).
+1. Select Task Scheduler Library (or create a subfolder).
+1. In the right-hand Actions pane, click Import Task…
+1. Navigate to the XML file, select it, and click Open
+1. Review the settings, ensure Run with highest privileges is selected, then click OK
 The task is now ready to run automatically on login.
 
 ## Disabling or Removing the Task
@@ -54,18 +54,18 @@ The task is now ready to run automatically on login.
 
 ## Updating Task Times
 To change the times the script enforces blocking/unblocking:
-#. Modify the times in the PowerShell script (`$disableStart` and `$disableEnd`).
+1. Modify the times in the PowerShell script (`$disableStart` and `$disableEnd`).
 And if using Task Scheduler:
-#. Update the XML triggers to times after the `$disableStart` and `$disableEnd` times.
-#. Delete the existing task from Task Scheduler.
-#. Re-import the updated XML file.
+1. Update the XML triggers to times after the `$disableStart` and `$disableEnd` times.
+1. Delete the existing task from Task Scheduler.
+1. Re-import the updated XML file.
 Note: Editing the XML file alone does not update an already-registered task in Task 
 Scheduler.
 
 ## Changing Blocked Websites
 To update the list of websites that are blocked:
-#. Open `productivity-blocker.ps1` in a text editor.
-#. Edit the `$blockedSites` array to add or remove domains.
+1. Open `productivity-blocker.ps1` in a text editor.
+1. Edit the `$blockedSites` array to add or remove domains.
 Example:
 ```powershell
 $blockedSites = @(
